@@ -1,0 +1,19 @@
+<div  class="todo-item"
+      (mouseover)="isHover=true" (mouseout)="isHover=false"
+>
+  <div class="swapItem">
+    <div class="todo">
+      <input type="checkbox" class="dropdown-toggle text-center">
+      <label>Todo item</label>
+    </div>
+
+    <div class="icon">
+      <span *ngIf="!isHover"></span>
+      <span *ngIf="isHover" class="d-flex justify-content-around align-items-center"  >
+        <p style="margin-right: 10px">chọn</p>
+         <p>delete</p>
+      </span>
+    </div>
+  </div>
+
+</div>

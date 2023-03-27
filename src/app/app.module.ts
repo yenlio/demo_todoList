@@ -8,7 +8,7 @@ import { TodoItemComponent } from './component/todo-item/todo-item.component';
 import { HeaderComponent } from './component/header/header.component';
 import { TodoInputComponent } from './component/todo-input/todo-input.component';
 import { FooterComponent } from './component/footer/footer.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +21,7 @@ import { FooterComponent } from './component/footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

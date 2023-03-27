@@ -1,19 +1,22 @@
-<div  class="todo-item"
-      (mouseover)="isHover=true" (mouseout)="isHover=false"
+<div class="todo-item"
+     (mouseover)="isHover=true" (mouseout)="isHover=false"
 >
   <div class="swapItem">
     <div class="todo">
-      <input type="checkbox" class="dropdown-toggle text-center">
-      <label>Todo item</label>
+      <input type="checkbox" [id]="data.id" [checked]="data.isCompleted" (change)="changeActive()">
+      <label [for]="data.id">{{ data.content }}</label>
     </div>
-
     <div class="icon">
       <span *ngIf="!isHover"></span>
-      <span *ngIf="isHover" class="d-flex justify-content-around align-items-center"  >
-        <p style="margin-right: 10px">chọn</p>
+      <span *ngIf="isHover" class="d-flex justify-content-around align-items-center">
+        <p style="margin-right: 10px" [hidden]="data.isCompleted" >chọn</p>
          <p>delete</p>
       </span>
-    </div>
+    </div>`
   </div>
+
+  <form class="edit-form" *ngIf="isEditing" [(ngModel)]="data.content" )]>
+
+  </form>
 
 </div>

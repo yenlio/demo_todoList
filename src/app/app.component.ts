@@ -13,10 +13,11 @@ export class AppComponent implements OnInit{
   }
   ngOnInit(): void {
     this.todoService.fetchFromLocal();
+    // console.log( localStorage.getItem("todos"),"log")
     this.hasTodo$=this.todoService.leng$.pipe(
       map(length=> length >0)
     )
-    
+
 
   }
 }

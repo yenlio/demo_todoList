@@ -19,19 +19,19 @@ export class TodoService {
 
   todos$: Observable<TodoModel[]> = this.displayObject.asObservable(); // thằng này để cho các comp khác chọc vào để xem
   leng$: Observable<number> = this.lengSubject.asObservable();
-
   constructor(private storage: LocalStorageService) {}
-
   fetchFromLocal() {
     this.todoArr = this.storage.getValue(TodoService.todoStorageKey); //lay het gia trị todo tư local
-    console.log(this.todoArr),"log";
-
-    // this.filterTodo=[...this.todoArr] //shallow clone
+    console.log(typeof(this.todoArr," todo arr"))
+    // console.log(this.todoArr," arr")
+    this.filterTodo=[...this.todoArr] //shallow clone
+    console.log(this.filterTodo,'filter')
     // this.filterTodo=this.todoArr
     // this.filterTodo = [...this.todoArr.map((todo) => ({ ...todo }))]; // clone deep cua lodash
     this.updateTodoData();
   }
   updateToLocal() {
+    console.log(this.todoArr,'kiem tra truoc khi them')
     this.storage.setObject(TodoService.todoStorageKey, this.todoArr);
     this.filterTodos(this.currentFiter, false);
     this.updateTodoData();
@@ -59,13 +59,17 @@ export class TodoService {
 
   public addTodo(content:string){
     const date= new Date(Date.now()).getTime();
-    console.log(date,content ," content");
-
     const newTodo=new TodoModel(date,content);
-    console.log(this.todoArr,"todo arr");
-
-    console.log(newTodo,"new todo");
+    console.log(this.todoArr,' du lieu')
     this.todoArr.unshift(newTodo);
+    console.log(this.todoArr,'todo ar add')
+    this.updateToLocal();
+
+  }
+  changeTodoservice(id:number , isCompleted:boolean){
+    const index= this.todoArr.findIndex(t=> t.id===id);
+    this.todoArr[index].isCompleted=isCompleted
+    this.todoArr.splice(index,1,this.todoArr[index])
     this.updateToLocal();
 
   }

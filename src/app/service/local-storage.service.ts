@@ -15,18 +15,23 @@ export class LocalStorageService {
   setObject(key:string,value:any):void{
     console.log(key,value,"local");
 
-    if (value!==null){
+    if (value==null){
       return
     }
-this.storage[key]=JSON.stringify(value)
 
+   localStorage.setItem(key,JSON.stringify(value));
+    console.log(
+      localStorage.getItem(key),'du lieu kiem tra'
+
+  )
   }
   // getValue (key:any):TodoModel[]{
   //  return JSON.parse(localStorage.getItem(key)!);
   // }
 
-  getValue<T>(key:string):T{
-    const obj= JSON.parse(this.storage[key] || null);
-    return <T>obj;
+  getValue(key:string){
+ // let  result=JSON.parse(localStorage.getItem(key)!);
+    return JSON.parse(localStorage.getItem(key) || '[]');
+
   }
 }

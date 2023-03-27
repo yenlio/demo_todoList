@@ -11,9 +11,6 @@ export class TodoItemComponent {
   constructor() {
     this.isHover = false;
   }
-
-
-
   over(){
     this.isHover=true
     console.log(this.isHover," is hover")

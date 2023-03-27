@@ -4,20 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TodoService {
-  storage:Storage
+  private readonly todoKey='todos'
+  private todoArr=[]
 
   constructor() {
-    this.storage=window.localStorage
-  }
-  setObject(key:string,value:any):void{
-    if (!value){
-      return
-    }
 
-    // getValue<T extends object>(key: string) {
-    //   const obj = JSON.parse(this.storage[key] || null);
-    //   return <T>obj || null;
-    // }
+
   }
+
 
 }

@@ -1,22 +1,29 @@
-<div class="todo-item"
-     (mouseover)="isHover=true" (mouseout)="isHover=false"
+<div class="todo-item "
+     (mouseover)="mouseover()" (mouseout)="overout()"
 >
-  <div class="swapItem">
-    <div class="todo">
+  <div class="swapItem bg-slate-200 m-1 h-10 ">
+    <div class="todo mx-5">
+    <div>
       <input type="checkbox" [id]="data.id" [checked]="data.isCompleted" (change)="changeActive()">
-      <label [for]="data.id">{{ data.content }}</label>
+      <label class="ml-5" [for]="data.id">{{ data.content }}</label>
     </div>
-    <div class="icon">
+      <form class="edit-form bg-blue-400 w-[105%] h-10 -mt-6" *ngIf="isEditing==true" >
+        <input class="w-[100%] h-10" name="dataInput" [(ngModel)]="data.content" (keyup.enter)="submitEdit()" >
+      </form>
+
+    </div>
+
+    <div class="icon -mt-8 mx-4">
       <span *ngIf="!isHover"></span>
-      <span *ngIf="isHover" class="d-flex justify-content-around align-items-center">
-        <p style="margin-right: 10px" [hidden]="data.isCompleted" >chọn</p>
-         <p>delete</p>
+      <span  class="flex justify-content-end">
+        <button  class="mx-2 " [hidden]="data.isCompleted" (click)="changeEditing()">chọnn</button>
+        <button (click)="remove()"> del</button>
       </span>
-    </div>`
+    </div>
+
   </div>
 
-  <form class="edit-form" *ngIf="isEditing" [(ngModel)]="data.content" )]>
 
-  </form>
+<!--  </form>-->
 
 </div>

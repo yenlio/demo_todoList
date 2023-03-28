@@ -20,8 +20,14 @@ export class TodoListComponent implements OnInit{
   }
   onChangetodo(event:TodoModel){
     this.service.changeTodoservice(event.id, event.isCompleted)
-
-
   }
+  inEditTodo(item :TodoModel){
+    this.service.editTodo(item.id, item.content)
+  }
+  delete(e:any){
+    console.log(e, "event")
+    this.service.deleteItem(e.id)
+  }
+
 
 }

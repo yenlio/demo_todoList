@@ -1,6 +1,9 @@
 <app-todo-item
+  class="mt-8"
   *ngFor="let item of todos$| async"
   [data]="item"
   (changeStatus)="onChangetodo($event)"
+  (editTodo)="inEditTodo($event)"
+  (deleteItem)="delete($event)"
 >
 </app-todo-item>

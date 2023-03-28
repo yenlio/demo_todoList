@@ -13,13 +13,15 @@
     margin-top: auto;
   }
   & .todo-wrapper{
+
     box-shadow: 0 2px 4px 0 #606060, 0 25px 50px 0 #d7d7d7;
-    background: #d9d7d7;
     & app-header{
       height: 40px;
       padding: 10px;
-      border-bottom: 1px blue;
-      box-shadow: 0 1px 0.5px blueviolet;
+
+      //box-shadow: 0 1px 0.5px blueviolet;
+    }
+    & app-todo-list{
     }
   }
 }

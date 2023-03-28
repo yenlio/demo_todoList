@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {BehaviorSubject, findIndex, Observable} from 'rxjs';
 import { Filter } from '../model/filter.model';
 import { TodoModel } from '../model/todo.model';
 import { LocalStorageService } from './local-storage.service';
@@ -71,6 +71,20 @@ export class TodoService {
     this.todoArr[index].isCompleted=isCompleted
     this.todoArr.splice(index,1,this.todoArr[index])
     this.updateToLocal();
+  }
+  editTodo(id:number, content:string){
+    const index= this.todoArr.findIndex(t=>t.id==id)
+    const todo= this.todoArr[index]
+    todo.content=content;
+    this.todoArr.splice(index,1,todo)
+    this.updateToLocal()
+  }
+  deleteItem(id:number){
+    const  index= this.todoArr.findIndex(t=>t.id===id)
+    this.todoArr.splice(index,1);
+    this.updateToLocal();
+
+
 
   }
 }

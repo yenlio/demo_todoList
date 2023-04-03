@@ -8,6 +8,7 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class TodoService {
+
   private static readonly todoStorageKey = 'todos'; //key để tương tác với local storage
   private todoArr: TodoModel[]=[]; // tổng tất cả todo
   private filterTodo!: TodoModel[]; // du lieu hien thi tren frontend khi lọc active/done...
@@ -83,6 +84,7 @@ export class TodoService {
     const  index= this.todoArr.findIndex(t=>t.id===id)
     this.todoArr.splice(index,1);
     this.updateToLocal();
+
 
 
 

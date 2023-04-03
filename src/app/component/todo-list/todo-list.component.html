@@ -7,3 +7,14 @@
   (deleteItem)="delete($event)"
 >
 </app-todo-item>
+
+<div *ngFor=" let item of this.dataApi$ |async">
+ <h1>
+   {{item.completed}}
+ </h1>
+</div>
+
+<!--su dung voi subcribe-->
+<!--<div *ngFor="let item of dataAPI">-->
+<!--  {{item.title}}-->
+<!--</div>-->
